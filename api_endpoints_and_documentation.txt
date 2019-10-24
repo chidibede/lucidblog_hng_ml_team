@@ -1,0 +1,19 @@
+For GUI web app testing
+For web app, Go to your browser and enter this url and test the recommender systems
+url for the web app: http://3.86.111.67/
+
+
+For direct API calls, the following are the api urls
+api url for popular users recommendation: http://3.86.111.67/new_user_recommend_api
+api url for similar user's recommendation: http://3.86.111.67/similar_user_recommend_api
+api url for Article recommendation: http://3.86.111.67/article_recommend_api
+api url endpoint for url page summarizations: http://3.86.111.67/summarized_url_api
+api url endpoint for article summarizations: http://3.86.111.67/summarized_article_api
+
+For direct api calls, postman can be used for testing before production
+
+new_user_api testing: https://www.getpostman.com/collections/b51baeceef02850cc899
+similar_user_api_testing: https://www.getpostman.com/collections/2616a70bd7cd033ba03f
+
+new_user_api documentation: https://documenter.getpostman.com/view/9109659/SVzw51Jx
+similar_user_api documentation: https://documenter.getpostman.com/view/9109659/SVzw51Jy
