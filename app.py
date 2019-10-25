@@ -145,6 +145,7 @@ def similar_user_recommender():
             name_of_user = name.lower()
         # recommend
         similar_users = recommend(int(USERS_SIM[USERS_SIM.name == name_of_user]['user_id']))
+
         return render_template('similar_recommend.html', prediction_text=similar_users)
     except:
         text = ["User does not exist/Has no bio"]
@@ -179,8 +180,15 @@ def similar_user_recommend_api():
         for name in json_df.name:
             name_of_user = name.lower()
         recommended_users = recommend(int(USERS_SIM[USERS_SIM.name == name_of_user]['user_id']))
+        
+        final_recommendation = []
+
+        for user in recommended_users:
+            user_image = USERS.loc[USERS.name==user, 'image'].item()
+            final_recommendation.append([user, user_image])
+
         recommended_users = {
-            "recommended_users": [x for x in recommended_users]
+            "recommended_users": [x for x in final_recommendation],
         }
         return jsonify(recommended_users)
     except:
@@ -200,8 +208,14 @@ def new_user_recommend_api():
         recommended_users = []
         for i_d in popular_users['user_id']:
             recommended_users.append(USERS.iloc[i_d, 0])
-        recommended_users = {
-            "recommended_users": [x for x in recommended_users]
+        
+        final_recommendation = []
+        for user in recommended_users:
+            user_image = USERS.loc[USERS.name==user, 'image'].item()
+            final_recommendation.append([user, user_image])
+
+        recommended_users = { 
+            "recommended_users": [x for x in final_recommendation]
         }
         return jsonify(recommended_users)
     except:
